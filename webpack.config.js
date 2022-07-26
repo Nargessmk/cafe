@@ -5,6 +5,7 @@ const {
     CleanWebpackPlugin
 } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 
 module.exports = {
     entry: "./src/index.js",
@@ -58,6 +59,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'index.html'
         }),
+        new ESLintPlugin(),
         // new HtmlWebpackPlugin({
         //     filename: 'image.html',
         //     chunks: ['image'],
