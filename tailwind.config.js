@@ -1,6 +1,9 @@
 module.exports = {
     content: ['./*.html'],
     theme: {
+      fontFamily: {
+        'IRANSansX': ['IRANSansX']
+      },
       extend: {},
     },
     plugins: [require('daisyui')],

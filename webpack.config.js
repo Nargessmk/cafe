@@ -1,24 +1,23 @@
 const path = require("path")
 const TerserPlugin = require("terser-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const {
-    CleanWebpackPlugin
-} = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
 
 module.exports = {
     entry: "./src/index.js",
     output: {
-        filename: "[name].[contenthash].js",
+        filename: "js/[name].[contenthash].js",
         path: path.resolve(__dirname, "./dist"),
         assetModuleFilename: 'images/[name][ext]'
     },
     mode: "development",
     module: {
         rules: [{
-                test: /\.css$/i,
-                use: [
+            test: /.s?css$/i,
+            use: [
                     MiniCssExtractPlugin.loader,
                     "css-loader",
                     {
@@ -27,7 +26,8 @@ module.exports = {
                             postcssOptions: {
                                 plugins: [
                                     [
-                                        require('tailwindcss')
+                                        require('tailwindcss'),
+                                        require('autoprefixer')
                                     ],
                                 ],
                             },
@@ -37,12 +37,21 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|svg|jpeg)$/i,
-                type: 'asset/resource'
+                type: 'asset/resource',
+                // use: [{
+                //     loader: 'file-loader',
+                //     options: {
+                //       name: '[name].[ext]',
+                //       outputPath: 'fonts/IRANSansX',
+                //       publicPath: './src/fonts/IRANSansX'
+                //     }
+                //   }]
             },
             {
-                test: /\.(eot|ttf|woff|woff2)$/i,
-                type: 'asset/inline',
-            },
+                test: /\.(woff|woff2)$/i,
+                type: 'asset/resource',
+                use: ["url-loader"]
+              },
             {
                 test: /\.js$/i,
                 exclude: /node_modules/,
@@ -60,11 +69,6 @@ module.exports = {
             template: 'index.html'
         }),
         new ESLintPlugin(),
-        // new HtmlWebpackPlugin({
-        //     filename: 'image.html',
-        //     chunks: ['image'],
-        //     template: 'image_template.html',
-        // }),
     ],
     devServer: {
         static: {
@@ -76,4 +80,9 @@ module.exports = {
             writeToDisk: true,
         },
     },
+    optimization: {
+        minimizer: [
+          new CssMinimizerPlugin(),
+        ],
+      },
 };
