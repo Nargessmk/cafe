@@ -1,3 +1,86 @@
-body {
-    margin: 0;
+@font-face {
+    font-family: IRANSansX;
+    font-style: normal;
+    font-weight: 100;
+    src: url('../assets/fonts/IRANSansXFaNum-Thin.woff') format('woff'),
+        url('../assets/fonts/IRANSansXFaNum-thin.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: IRANSansX;
+    font-style: normal;
+    font-weight: 200;
+    src: url('../assets/fonts/IRANSansXFaNum-UltraLight.woff') format('woff'),
+        url('../assets/fonts/IRANSansXFaNum-UltraLight.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: IRANSansX;
+    font-style: normal;
+    font-weight: 300;
+    src: url('../assets/fonts/IRANSansXFaNum-light.woff') format('woff'),
+        url('../assets/fonts/IRANSansXFaNum-light.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: IRANSansX;
+    font-style: normal;
+    font-weight: 500;
+    src: url('../assets/fonts/IRANSansXFaNum-medium.woff') format('woff'),
+        url('../assets/fonts/IRANSansXFaNum-medium.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: IRANSansX;
+    font-style: normal;
+    font-weight: 600;
+    src: url('../assets/fonts/IRANSansXFaNum-demibold.woff') format('woff'),
+        url('../assets/fonts/IRANSansXFaNum-demibold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: IRANSansX;
+    font-style: normal;
+    font-weight: 800;
+    src: url('../assets/fonts/IRANSansXFaNum-extrabold.woff') format('woff'),
+        url('../assets/fonts/IRANSansXFaNum-extrabold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: IRANSansX;
+    font-style: normal;
+    font-weight: 900;
+    src: url('../assets/fonts/IRANSansXFaNum-black.woff') format('woff'),
+        url('../assets/fonts/IRANSansXFaNum-black.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: IRANSansX;
+    font-style: normal;
+    font-weight: bold;
+    src: url('../assets/fonts/IRANSansXFaNum-bold.woff') format('woff'),
+        url('../assets/fonts/IRANSansXFaNum-bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: IRANSansX;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../assets/fonts/IRANSansXFaNum-regular.woff') format('woff'),
+        url('../assets/fonts/IRANSansXFaNum-Regular.woff') format('woff2');
+}
+
+body,
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+textarea,
+input {
+    font-family: IRANSansX;
 }

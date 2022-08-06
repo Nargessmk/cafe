@@ -11,13 +11,12 @@ module.exports = {
     output: {
         filename: "js/[name].[contenthash].js",
         path: path.resolve(__dirname, "./dist"),
-        assetModuleFilename: 'images/[name][ext]'
     },
     mode: "development",
     module: {
         rules: [{
-            test: /.s?css$/i,
-            use: [
+                test: /.s?css$/i,
+                use: [
                     MiniCssExtractPlugin.loader,
                     "css-loader",
                     {
@@ -38,20 +37,20 @@ module.exports = {
             {
                 test: /\.(png|jpg|svg|jpeg)$/i,
                 type: 'asset/resource',
-                // use: [{
-                //     loader: 'file-loader',
-                //     options: {
-                //       name: '[name].[ext]',
-                //       outputPath: 'fonts/IRANSansX',
-                //       publicPath: './src/fonts/IRANSansX'
-                //     }
-                //   }]
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "[name].[ext]",
+                            outputPath: "images/",
+                        },
+                    },
+                ]
             },
             {
-                test: /\.(woff|woff2)$/i,
-                type: 'asset/resource',
-                use: ["url-loader"]
-              },
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset/inline',
+            },
             {
                 test: /\.js$/i,
                 exclude: /node_modules/,
@@ -66,7 +65,8 @@ module.exports = {
             filename: 'css/[name].[contenthash].css'
         }),
         new HtmlWebpackPlugin({
-            template: 'index.html'
+            template: 'index.html',
+            title: 'Restaurant Website',
         }),
         new ESLintPlugin(),
     ],
@@ -82,7 +82,11 @@ module.exports = {
     },
     optimization: {
         minimizer: [
-          new CssMinimizerPlugin(),
+            new CssMinimizerPlugin(),
         ],
-      },
+        minimize: true,
+    },
+    stats: {
+        errorDetails: true
+    },
 };
